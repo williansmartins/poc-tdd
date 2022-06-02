@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -27,5 +28,14 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('angular-app app is running!');
+  });
+
+  it('Home - Deveria ter 5 quadros grandes', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    
+    const elementos = fixture.debugElement.queryAll(By.css('.card-container a.card'));
+
+    expect(5).toEqual(elementos.length);
   });
 });
